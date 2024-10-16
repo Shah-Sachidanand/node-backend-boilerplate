@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",             // Use ES2020 or higher for modern Node.js environments
+    "module": "commonjs",           // CommonJS module system
+    "strict": true,                 // Enables strict type-checking
+    "esModuleInterop": true,        // Allow interoperability with ES6 modules
+    "skipLibCheck": true,           // Skip type-checking of declaration files for faster builds
+    "outDir": "./dist",             // Output directory for compiled files
+    "rootDir": "./src",             // Source directory
+    "sourceMap": true,              // Generate source maps for easier debugging
+    "noEmitOnError": true           // Prevent emitting files if there are errors
+  },
+  "include": ["src/**/*"],           // Include all TypeScript files in the "src" folder
+  "exclude": ["node_modules"]        // Exclude "node_modules" from being compiled
+}
