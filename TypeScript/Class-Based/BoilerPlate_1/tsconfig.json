@@ -6,10 +6,10 @@
     "esModuleInterop": true,        // Allow interoperability with ES6 modules
     "skipLibCheck": true,           // Skip type-checking of declaration files for faster builds
     "outDir": "./dist",             // Output directory for compiled files
-    "rootDir": "./",             // Source directory
+    "rootDir": "./",                // Source directory
     "sourceMap": true,              // Generate source maps for easier debugging
     "noEmitOnError": true           // Prevent emitting files if there are errors
   },
-  "include": ["./"],           // Include all TypeScript files in the "src" folder
-  "exclude": ["node_modules", "dist", "src/views"]       // Exclude "node_modules" and "src/views" from being compiled
+  "include": ["**/*.ts", "views/**/*"], // Include all TypeScript files and HTML files in views
+  "exclude": ["node_modules", "dist"] // Exclude "node_modules" and "dist" from being compiled
 }

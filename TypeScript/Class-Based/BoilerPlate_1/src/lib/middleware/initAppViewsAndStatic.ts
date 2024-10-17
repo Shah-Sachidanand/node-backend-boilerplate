@@ -1,13 +1,17 @@
-import path from "path";
-import express, { Application } from "express";
+import { Application } from "express";
 import { renderFile } from "ejs"; // Assuming you're using EJS for rendering
+import path from "path";
+import { NodeENVEnums } from "../utils/enums";
 
 const initAppViewsAndStatic = (app: Application) => {
-  // Serve static assets (CSS, JS, images, etc.)
-  app.use(express.static(path.resolve("public")));
+  // Determine the environment
+  const isProduction = process.env.NODE_ENV === NodeENVEnums.PRODUCTION;
 
   // Set the views directory for rendering templates
-  app.set("views", path.resolve(__dirname, "../../views"));
+  const viewsDir = isProduction
+    ? path.resolve(__dirname, "./views")
+    : path.resolve(__dirname, "../../views");
+  app.set("views", viewsDir);
 
   // Configure the engine to render .html files
   app.engine("html", renderFile);
