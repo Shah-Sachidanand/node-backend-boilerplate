@@ -7,7 +7,6 @@
  */
 
 import express from "express";
-import inItRouters from "./routes";
 import connectDB from "./config/db";
 import dotenvSafe from "dotenv-safe";
 import { APP_PORT } from "./lib/constants";
@@ -17,6 +16,7 @@ import inItLogger from "./lib/middleware/logger";
 import errorHandlerMiddleware from "./lib/middleware/errorHandler";
 import inItNonServiceRoutes from "./lib/middleware/nonServiceRoutes";
 import initAppViewsAndStatic from "./lib/middleware/initAppViewsAndStatic";
+import inItRouters from "./routes";
 
 /**
  * Initializes the Express server, loads environment variables, connects to the database,

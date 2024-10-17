@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { authMiddleware } from "../lib/middleware/auth";
-import ControllerManager from "../controllers";
+import { authMiddleware } from "../../lib/middleware/auth";
+import ControllerManager from "../../controllers";
 
 /**
  * UserRouter is a class that extends ControllerManager and is responsible for setting up routes related to user operations.
@@ -23,7 +23,7 @@ class UserRouter extends ControllerManager {
    */
   private initializeRoutes() {
     this.router
-      .route("/user")
+      .route("/")
       .get(authMiddleware, super.userController.getUser)
       .post(authMiddleware, super.userController.createUser);
     this.router.post("/authenticate", super.userController.authenticate);

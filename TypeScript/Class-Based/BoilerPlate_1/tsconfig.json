@@ -10,6 +10,6 @@
     "sourceMap": true,              // Generate source maps for easier debugging
     "noEmitOnError": true           // Prevent emitting files if there are errors
   },
-  "include": ["**/*.ts", "views/**/*"], // Include all TypeScript files and HTML files in views
+  "include": ["./**/*"], // Include all TypeScript files and HTML files in views
   "exclude": ["node_modules", "dist"] // Exclude "node_modules" and "dist" from being compiled
 }

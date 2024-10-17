@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { authMiddleware } from "../lib/middleware/auth";
-import ControllerManager from "../controllers";
+import ControllerManager from "../../controllers";
+import { authMiddleware } from "../../lib/middleware/auth";
 
 /**
  * ReferralRouter is a class that extends ControllerManager and is responsible for setting up routes related to user operations.
@@ -23,7 +23,7 @@ class ReferralRouter extends ControllerManager {
    */
   private initializeRoutes() {
     this.router
-      .route("/referral")
+      .route("/")
       .get(authMiddleware, super.referralController.getReferrals)
       .post(authMiddleware, super.referralController.createReferral);
   }
