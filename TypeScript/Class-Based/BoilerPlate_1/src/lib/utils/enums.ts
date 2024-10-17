@@ -3,3 +3,8 @@ export enum ReferralStatus {
   ACCEPTED = "accepted",
   REJECTED = "rejected",
 }
+
+export enum NodeENVEnums {
+  PRODUCTION = "production",
+  DEVELOPMENT = "development",
+}

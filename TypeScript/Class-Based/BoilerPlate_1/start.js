@@ -5,8 +5,14 @@ console.log("Starting TypeScript compilation...");
 
 exec("npx tsc", (error, stdout, stderr) => {
   if (error) {
-    console.error(`❌ TypeScript build failed:\n${stderr}`);
+    // TypeScript errors might be in stdout, so check both stdout and stderr
+    console.error(`❌ TypeScript build failed:\n${stdout || stderr}`);
     process.exit(1); // Exit with an error code
+  }
+
+  if (stderr) {
+    // If there is anything in stderr, print it out (even if there's no error)
+    console.error(`⚠️ Warning:\n${stderr}`);
   }
 
   console.log("✅ TypeScript build successful.");

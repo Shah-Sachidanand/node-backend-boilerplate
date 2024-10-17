@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import { MONGO_URI } from "../lib/constants";
+import { APP_PORT, MONGO_URI, NODE_ENV } from "../lib/constants";
+import logger from "../lib/logger";
 
 /**
  * Establishes a connection to the MongoDB database.
@@ -10,7 +11,11 @@ import { MONGO_URI } from "../lib/constants";
 const connectDB = async () => {
   try {
     await mongoose.connect(MONGO_URI);
-    console.info("MongoDB connected");
+    // Prints initialization
+    logger?.info("Starting Server.");
+    logger?.info(`Port: ${APP_PORT}`);
+    logger?.info(`NODE_ENV: ${NODE_ENV}`);
+    logger?.info(`Database Status: Connected!`);
   } catch (err: any) {
     console.error(err.message);
     process.exit(1);

@@ -4,7 +4,7 @@ import ServiceManager from "../services";
 import buildError from "../lib/utils/buildError";
 import { StatusCodes } from "../lib/utils/statusCodes";
 import { ReferralDocument, UserDocument } from "../models";
-import { getInitData } from "../lib/middleware/authMiddleware";
+import { getInitData } from "../lib/middleware/auth";
 import { ReferralStatus } from "../lib/utils/enums";
 import buildResponse from "../lib/utils/buildResponse";
 import UserMessages from "../lib/messages/user";

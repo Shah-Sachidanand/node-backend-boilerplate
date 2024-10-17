@@ -1,8 +1,4 @@
-import {
-  validate,
-  parse,
-  type InitDataParsed,
-} from "@telegram-apps/init-data-node";
+import { validate, parse, type InitData } from "@telegram-apps/init-data-node";
 import { type RequestHandler, type Response } from "express";
 import { TELEGRAM_BOT_TOKEN } from "../constants";
 import buildError from "../utils/buildError";
@@ -14,7 +10,7 @@ import { StatusCodes } from "../utils/statusCodes";
  * @param res - Response object.
  * @param initData - init data.
  */
-function setInitData(res: Response, initData: InitDataParsed): void {
+function setInitData(res: Response, initData: InitData): void {
   res.locals.initData = initData;
 }
 
@@ -24,7 +20,7 @@ function setInitData(res: Response, initData: InitDataParsed): void {
  * @returns Init data stored in the Response object. Can return undefined in case,
  * the client is not authorized.
  */
-export function getInitData(res: Response): InitDataParsed | undefined {
+export function getInitData(res: Response): InitData | undefined {
   if (res.locals.initData && res.locals.initData?.user) {
     return res.locals.initData;
   }

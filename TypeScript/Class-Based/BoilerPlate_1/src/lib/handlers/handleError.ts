@@ -2,6 +2,7 @@ import { Response } from "express";
 import { MongoServerError } from "mongodb";
 import { StatusCodes } from "../utils/statusCodes";
 import { ErrorResponse } from "../../@types";
+import logger from "../logger";
 
 /**
  * Generates an error response
@@ -62,7 +63,7 @@ const handleError = (
 ): void => {
   // Logs error to the console in development or other non-test environments
   if (process.env.NODE_ENV !== "test") {
-    console.error(err);
+    logger?.error(err);
   }
 
   // Check if the error is a MongoServerError

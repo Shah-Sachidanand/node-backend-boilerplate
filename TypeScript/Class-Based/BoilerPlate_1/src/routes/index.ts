@@ -1,8 +1,7 @@
-import { Router } from "express";
 import userRoutes from "./userRoutes";
-import buildError from "../lib/utils/buildError";
-import { StatusCodes } from "../lib/utils/statusCodes";
 import referralRoutes from "./referralRoutes";
+import { Application, Router } from "express";
+import { API_VERSION } from "../lib/constants";
 
 /**
  * This module sets up the main router for the application.
@@ -17,11 +16,8 @@ router.use("/", userRoutes);
 router.use("/", referralRoutes);
 // Add other route modules here
 
-/**
- * Handles all unmatched routes by sending a 404 error response.
- * @param req - The Express request object.
- * @param res - The Express response object.
- */
-router.use("*", () => buildError(StatusCodes.NOT_FOUND, "URL_NOT_FOUND"));
+const inItRouters = (app: Application) => {
+  app.use(`/${API_VERSION}`, router);
+};
 
-export default router;
+export default inItRouters;

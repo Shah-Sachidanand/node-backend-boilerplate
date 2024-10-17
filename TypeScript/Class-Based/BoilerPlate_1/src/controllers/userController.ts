@@ -6,7 +6,7 @@ import { StatusCodes } from "../lib/utils/statusCodes";
 import dayjs from "dayjs";
 import { DOMAIN, NODE_ENV } from "../lib/constants";
 import { JwtSubject } from "../@types";
-import { getInitData } from "../lib/middleware/authMiddleware";
+import { getInitData } from "../lib/middleware/auth";
 import asyncHandler from "../lib/handlers/asyncHandler";
 import ServiceManager from "../services";
 import UserMessages from "../lib/messages/user";

@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import dotenv from "dotenv-safe";
 // Load environment variables
 dotenv.config();
 
@@ -49,7 +49,7 @@ export const REDIS_PORT: string = process.env.REDIS_PORT as string;
  * The port number on which the application is running
  * @type {string}
  */
-export const APP_PORT: string = (process.env.PORT as string) || "5000";
+export const APP_PORT: string = process.env.PORT as string;
 
 /**
  * Environment variable indicating whether to use Redis for caching
@@ -62,3 +62,9 @@ export const USE_REDIS: string = process.env.USE_REDIS as string;
  * @type {string}
  */
 export const API_VERSION: string = process.env.API_VERSION as string;
+
+/**
+ * Allowed Origins
+ * @type {string}
+ */
+export const ALLOWED_ORIGINS: string = process.env.ALLOWED_ORIGINS as string;

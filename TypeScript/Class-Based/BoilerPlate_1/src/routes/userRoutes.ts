@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { authMiddleware } from "../lib/middleware/authMiddleware";
+import { authMiddleware } from "../lib/middleware/auth";
 import ControllerManager from "../controllers";
 
 /**
