@@ -14,10 +14,10 @@ import { APP_PORT } from "./lib/constants";
 import inItCors from "./lib/middleware/cors";
 import inItRedis from "./lib/middleware/redis";
 import inItLogger from "./lib/middleware/logger";
+import inItBodyParser from "./lib/middleware/bodyParser";
 import inItErrorHandler from "./lib/middleware/errorHandler";
 import inItNonServiceRoutes from "./lib/middleware/nonServiceRoutes";
 import initAppViewsAndStatic from "./lib/middleware/initAppViewsAndStatic";
-import inItBodyParser from "./lib/middleware/bodyParser";
 
 /**
  * Initializes the Express server, loads environment variables, connects to the database,
