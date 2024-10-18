@@ -1,7 +1,19 @@
 import { Application, NextFunction, Request, Response } from "express";
 import logger from "../logger";
 
+/**
+ * Initializes the logger middleware for the Express application.
+ * This middleware logs incoming requests and their details, including method, endpoint, query, params, and body.
+ * It also profiles the request duration and logs the response status code.
+ * @param app - The Express application.
+ */
 const inItLogger = (app: Application) => {
+  /**
+   * Middleware function to log request details and profile request duration.
+   * @param req - The Express request object.
+   * @param res - The Express response object.
+   * @param next - The next middleware function in the Express application.
+   */
   const requestLogger = (req: Request, res: Response, next: NextFunction) => {
     // Log request details
     const requestInfo = {

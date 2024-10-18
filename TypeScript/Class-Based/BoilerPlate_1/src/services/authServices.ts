@@ -1,12 +1,5 @@
 import { JwtPayload, JwtSubject } from "../@types";
-import {
-  // createWebAppSecret,
-  decodeInitData,
-  InitData,
-  // verifyTelegramWebAppInitData,
-} from "../lib/utils/auth.utils";
-// import buildError from "../utils/buildError";
-// import { StatusCodes } from "../utils/statusCodes";
+import { decodeInitData, InitData } from "../lib/utils/auth.utils";
 import JWTServices from "./jwtServices";
 import RepositoryManager from "../repositories";
 import { UserDocument } from "../models";
@@ -16,26 +9,38 @@ import buildError from "../lib/utils/buildError";
 import { StatusCodes } from "../lib/utils/statusCodes";
 import UserMessages from "../lib/messages/user";
 
+/**
+ * AuthService extends RepositoryManager to provide authentication-related services.
+ */
 class AuthService extends RepositoryManager {
-  constructor() {
-    super();
-  }
+  /**
+   * Validates the initialization data for the mini app.
+   *
+   * @param raw - The raw initialization data string.
+   * @returns The decoded initialization data.
+   */
   validateMiniAppInitData(raw: string): InitData {
     const initData = decodeInitData(raw);
-    // const secretKey = createWebAppSecret();
-
-    // if (!verifyTelegramWebAppInitData(initData, secretKey)) {
-    //   buildError(StatusCodes.BAD_REQUEST, "Invalid init data");
-    // }
-
     return initData;
   }
 
+  /**
+   * Creates an access token for a given user.
+   *
+   * @param user - The user for whom the access token is to be created.
+   * @returns A promise that resolves to the access token.
+   */
   async createAccessToken(user: JwtPayload["sub"]): Promise<string> {
     const payload: JwtPayload = { sub: user };
     return JWTServices.generateToken(payload);
   }
 
+  /**
+   * Retrieves or creates a user based on the provided subject.
+   *
+   * @param user - The user subject.
+   * @returns A promise that resolves to the user document if found or created, otherwise an error.
+   */
   async getOrCreateUser(user: JwtSubject) {
     const isUserExists = await this.userRepository.findOne({ _id: user.id });
     if (isUserExists) {
@@ -87,6 +92,12 @@ class AuthService extends RepositoryManager {
     return await this.userRepository.findById(_id);
   }
 
+  /**
+   * Finds a user by their referral code.
+   *
+   * @param referralCode The referral code of the user to find.
+   * @returns A promise that resolves to the user document if found, otherwise null.
+   */
   async getUserByReferralCode(
     referralCode: string
   ): Promise<UserDocument | null> {

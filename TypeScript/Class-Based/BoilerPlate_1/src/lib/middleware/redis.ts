@@ -1,6 +1,7 @@
 import { Application } from "express";
 import { REDIS_HOST, USE_REDIS, REDIS_PORT } from "../constants";
 import getExpeditiousCache from "express-expeditious";
+import logger from "../logger";
 
 const inItRedis = (app: Application) => {
   if (USE_REDIS === "true") {
@@ -20,8 +21,8 @@ const inItRedis = (app: Application) => {
 
       app.use(cache);
     } catch (error) {
-      console.error("Error connecting to Redis:", error);
-      return null; // Return null if there is an error
+      logger?.error("Error connecting to Redis:", error);
+      return null;
     }
   }
 };
