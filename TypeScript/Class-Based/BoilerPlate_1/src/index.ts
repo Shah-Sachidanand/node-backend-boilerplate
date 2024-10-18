@@ -7,16 +7,16 @@
  */
 
 import express from "express";
+import inItRouters from "./routes";
 import connectDB from "./config/db";
 import dotenvSafe from "dotenv-safe";
 import { APP_PORT } from "./lib/constants";
 import inItCors from "./lib/middleware/cors";
 import inItRedis from "./lib/middleware/redis";
 import inItLogger from "./lib/middleware/logger";
-import errorHandlerMiddleware from "./lib/middleware/errorHandler";
+import inItErrorHandler from "./lib/middleware/errorHandler";
 import inItNonServiceRoutes from "./lib/middleware/nonServiceRoutes";
 import initAppViewsAndStatic from "./lib/middleware/initAppViewsAndStatic";
-import inItRouters from "./routes";
 
 /**
  * Initializes the Express server, loads environment variables, connects to the database,
@@ -52,8 +52,8 @@ const inItServer = () => {
   // Initialize non-service routes
   inItNonServiceRoutes(app);
 
-  // Custom Error handler middleware
-  app.use(errorHandlerMiddleware);
+  // Initialize Custom Error handler middleware
+  inItErrorHandler(app);
 
   // Start the server
   app.listen(APP_PORT);
