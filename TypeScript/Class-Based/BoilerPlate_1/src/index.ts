@@ -17,6 +17,7 @@ import inItLogger from "./lib/middleware/logger";
 import inItErrorHandler from "./lib/middleware/errorHandler";
 import inItNonServiceRoutes from "./lib/middleware/nonServiceRoutes";
 import initAppViewsAndStatic from "./lib/middleware/initAppViewsAndStatic";
+import inItBodyParser from "./lib/middleware/bodyParser";
 
 /**
  * Initializes the Express server, loads environment variables, connects to the database,
@@ -31,8 +32,8 @@ const inItServer = () => {
 
   const app = express();
 
-  // Initialize middleware
-  app.use(express.json());
+  // Initialize body parser middleware
+  inItBodyParser(app);
 
   // Initialize CORS middleware
   inItCors(app);
