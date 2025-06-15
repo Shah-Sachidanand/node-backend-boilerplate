@@ -1,61 +1,85 @@
-# Class Base API Boilerplate
+# Node.js Backend Boilerplate (Class-based)
+
+A simple, class-based Node.js API boilerplate for rapid backend development.
+
+## Features
+
+- Class-based controller and service structure
+- MongoDB integration
+- JWT authentication (generic, not Telegram-specific)
+- Environment-based configuration
+- Ready for Docker and deployment
+- Easily extendable for new features
 
 ## Requirements
 
 - Node.js **18+**
+- MongoDB instance (local or remote)
+- (Optional) Redis for caching
 
-## How to install
+## Getting Started
 
-### Using Github
-
-1.  Clone the project from github. Change "myproject" to your project name.
+### 1. Clone the repository
 
 ```bash
 git clone <Git URL> ./myproject
+cd myproject
 ```
 
-### Install npm dependencies after installing (Git or manual download)
+### 2. Install dependencies
 
 ```bash
-cd myproject
 npm install
 ```
 
-### Setting up environments (development or production)
+### 3. Configure environment variables
 
-1.  In the root this repository you will find a file named `.env.example`
-2.  Create a new file by copying and pasting the file and then renaming it to just `.env`
-3.  The file `.env` is already ignored, so you never commit your credentials.
-4.  Change the values of the file to your environment (development or production)
-5.  Upload the `.env` to your environment server(development or production)
-6.  If you use the postman collection to try the endpoints, change value of the variable `server` on your environment to the url of your server, for development mode use <http://localhost:3000>
+1. Copy `.env.example` to `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+2. Edit `.env` and set your configuration (MongoDB URI, JWT secret, etc).
 
-### Running in development mode (lifting API server)
+### 4. Run the server
+
+#### Development mode
 
 ```bash
 npm run dev
 ```
 
-You will know server is running by checking the output of the command `npm run dev`
+#### Production mode
 
 ```bash
-2024-10-17T11:47:27.648Z info: Starting Server.
-2024-10-17T11:47:27.650Z info: Port: 8000
-2024-10-17T11:47:27.651Z info: NODE_ENV: development
-2024-10-17T11:47:27.651Z info: Database Status: Connected!
+npm start
 ```
 
-### Running in Production mode (lifting API server)
+### 5. API Usage
+
+- The API runs by default on `http://localhost:8000`
+- Use tools like Postman to test endpoints.
+- Update the `server` variable in your Postman environment to match your API URL.
+
+## Project Structure
+
+```
+src/
+  controllers/
+  models/
+  services/
+  lib/
+.env.example
+README.md
+```
+
+## Example Output
 
 ```bash
-npm run start
+2025-06-15T11:47:27.648Z info: Starting Server.
+2025-06-15T11:47:27.650Z info: Port: 8000
+2025-06-15T11:47:27.651Z info: NODE_ENV: development
+2025-06-15T11:47:27.651Z info: Database Status: Connected!
 ```
 
-You will know server is running by checking the output of the command `npm run start`
+## License
 
-```bash
-2024-10-17 17:21:20 [info] Starting Server.
-2024-10-17 17:21:20 [info] Port: 8000
-2024-10-17 17:21:20 [info] NODE_ENV: production
-2024-10-17 17:21:20 [info] Database Status: Connected!
-```
