@@ -9,17 +9,11 @@ class ControllerManager {
   private userControllerInstance: UserController | undefined;
   private referralControllerInstance: ReferralController | undefined;
   /**
-   * Constructor for ControllerManager. Initializes the controller manager.
-   */
-  constructor() {}
-  /**
    * Getter for UserController instance. If an instance does not exist, it creates a new one.
    * @returns The UserController instance.
    */
   protected get userController() {
-    if (!this.userControllerInstance) {
-      this.userControllerInstance = new UserController();
-    }
+    this.userControllerInstance ??= new UserController();
     return this.userControllerInstance;
   }
 
@@ -28,9 +22,7 @@ class ControllerManager {
    * @returns The ReferralController instance.
    */
   protected get referralController() {
-    if (!this.referralControllerInstance) {
-      this.referralControllerInstance = new ReferralController();
-    }
+    this.referralControllerInstance ??= new ReferralController();
     return this.referralControllerInstance;
   }
 }

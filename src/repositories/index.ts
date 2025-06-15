@@ -1,4 +1,4 @@
-import UserRepository from "../repositories/userRepository";
+import UserRepository from "./userRepository";
 import ReferralRepository from "./referralRepository";
 
 /**
@@ -8,11 +8,6 @@ import ReferralRepository from "./referralRepository";
 class RepositoryManager {
   private _userRepositoryInstance: UserRepository | undefined;
   private _referralRepositoryInstance: ReferralRepository | undefined;
-  /**
-   * Constructor for RepositoryManager.
-   * Initializes the instance with no UserRepository instance.
-   */
-  constructor() {}
 
   /**
    * Getter for UserRepository instance.
@@ -22,16 +17,12 @@ class RepositoryManager {
    * @returns The instance of UserRepository.
    */
   protected get userRepository() {
-    if (!this._userRepositoryInstance) {
-      this._userRepositoryInstance = new UserRepository();
-    }
+    this._userRepositoryInstance ??= new UserRepository();
     return this._userRepositoryInstance;
   }
 
   protected get referralRepository() {
-    if (!this._referralRepositoryInstance) {
-      this._referralRepositoryInstance = new ReferralRepository();
-    }
+    this._referralRepositoryInstance ??= new ReferralRepository();
     return this._referralRepositoryInstance;
   }
 }
